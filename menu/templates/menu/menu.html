@@ -1,0 +1,16 @@
+<ul>
+    {% for item in items %}
+        <li>
+            {% if item.URL == request.path %}
+            <p>{{ item.name }}</p>
+            {% else %}
+            <a href="{{ item.URL }}">{{ item.name }}</a>
+            {% endif %}
+        </li>
+
+        {% if item.child_items %}
+            {% include 'menu/menu.html' with items=item.child_items %}
+        {% endif %}
+
+    {% endfor %}
+</ul>
